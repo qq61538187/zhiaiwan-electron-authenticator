@@ -1,0 +1,229 @@
+{
+  "name": "zhiaiwan-electron-authenticator",
+  "version": "1.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qq61538187/zhiaiwan-electron-authenticator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qq61538187/zhiaiwan-electron-authenticator/issues"
+  },
+  "homepage": "https://github.com/qq61538187/zhiaiwan-electron-authenticator#readme",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "scripts": {
+    "electron:run": "env -u ELECTRON_RUN_AS_NODE ./node_modules/electron/dist/Electron.app/Contents/MacOS/Electron .",
+    "dev": "cross-env NODE_ENV=development concurrently -k \"vite\" \"wait-on tcp:5173 && npm run electron:run\"",
+    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:status": "changeset status",
+    "release": "changeset publish",
+    "commit": "cz",
+    "commitlint": "commitlint --edit",
+    "lint-staged": "lint-staged",
+    "preview": "vite preview",
+    "dist:mac": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg zip --arm64 --publish never",
+    "dist:mac:intel": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg zip --x64 --publish never",
+    "dist:mac:apple": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg zip --arm64 --publish never",
+    "dist:mac:both": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg zip --x64 --arm64 --publish never",
+    "dist:win": "npm run build && electron-builder --win zip --x64 --arm64 --publish never",
+    "dist:all": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg zip --win zip --x64 --arm64 --publish never",
+    "prepare": "husky"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-git"
+    }
+  },
+  "cz-git": {
+    "maxSubjectLength": 100,
+    "minSubjectLength": 3,
+    "allowCustomScopes": true,
+    "allowEmptyIssuePrefixs": false,
+    "messages": {
+      "type": "请选择提交类型:",
+      "scope": "请选择影响范围 (可多选):",
+      "customScope": "请输入自定义范围:",
+      "subject": "请填写提交标题 (简短说明本次改动):",
+      "body": "请填写详细说明 (可选，说明为什么改):",
+      "breaking": "是否有 BREAKING CHANGE? (y/N):",
+      "footerPrefixesSelect": "请选择关联 issue 前缀 (可选):",
+      "customFooterPrefixs": "请输入自定义 issue 前缀:",
+      "footer": "请输入关联 issue (例如: #123) (可选):",
+      "confirmCommit": "确认提交以上内容?"
+    },
+    "types": [
+      {
+        "value": "feat",
+        "name": "feat: 新功能"
+      },
+      {
+        "value": "fix",
+        "name": "fix: 修复问题"
+      },
+      {
+        "value": "refactor",
+        "name": "refactor: 重构"
+      },
+      {
+        "value": "perf",
+        "name": "perf: 性能优化"
+      },
+      {
+        "value": "docs",
+        "name": "docs: 文档更新"
+      },
+      {
+        "value": "test",
+        "name": "test: 测试相关"
+      },
+      {
+        "value": "build",
+        "name": "build: 构建系统/依赖"
+      },
+      {
+        "value": "ci",
+        "name": "ci: CI 配置"
+      },
+      {
+        "value": "style",
+        "name": "style: 代码风格 (不影响逻辑)"
+      },
+      {
+        "value": "chore",
+        "name": "chore: 杂项维护"
+      },
+      {
+        "value": "revert",
+        "name": "revert: 回滚提交"
+      }
+    ],
+    "scopes": [
+      {
+        "name": "auth"
+      },
+      {
+        "name": "authenticator"
+      },
+      {
+        "name": "security"
+      },
+      {
+        "name": "lockscreen"
+      },
+      {
+        "name": "settings"
+      },
+      {
+        "name": "floating-ball"
+      },
+      {
+        "name": "trashbin"
+      },
+      {
+        "name": "i18n"
+      },
+      {
+        "name": "ipc"
+      },
+      {
+        "name": "tray"
+      },
+      {
+        "name": "ui"
+      },
+      {
+        "name": "electron"
+      },
+      {
+        "name": "build"
+      },
+      {
+        "name": "deps"
+      },
+      {
+        "name": "docs"
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx,vue,cjs,js,mjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "otplib": "^12.0.1",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.30.0",
+    "@commitlint/cli": "^20.4.3",
+    "@commitlint/config-conventional": "^20.4.3",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "commitizen": "^4.3.1",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "cz-git": "^1.12.0",
+    "electron": "^37.2.6",
+    "electron-builder": "^24.13.3",
+    "eslint": "^10.0.2",
+    "eslint-plugin-vue": "^10.8.0",
+    "globals": "^17.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.56.1",
+    "vite": "^5.4.19",
+    "vue-eslint-parser": "^10.4.0",
+    "vue-tsc": "^2.2.12",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.zhiaiwan.electron.authenticator",
+    "productName": "Zhiaiwan Authenticator",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "identity": null,
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": [
+        "zip"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "${productName}-${version}-setup.${ext}"
+    },
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+  }
+}
