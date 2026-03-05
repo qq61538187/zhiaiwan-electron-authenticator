@@ -115,3 +115,15 @@ npm run changeset
   - `npm run dist:win`
 
 > `release/` 为构建产物目录，已在 `.gitignore` 中忽略，不会提交到仓库。
+
+## 常见问题
+
+### 1) 从 GitHub 下载的 mac 安装包提示“安装包已损坏”怎么办？
+
+这通常不是安装包真的损坏，而是 macOS 的安全策略（Gatekeeper）拦截了未签名或未公证应用。
+
+如果你是开发测试环境，可执行以下命令移除隔离标记后再安装：
+
+```bash
+xattr -dr com.apple.quarantine "/path/to/Zhiaiwan Authenticator-*.dmg"
+```
