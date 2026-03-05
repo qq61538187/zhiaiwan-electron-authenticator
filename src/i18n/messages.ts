@@ -106,7 +106,7 @@ type Messages = Record<AppLanguage, Record<MessageKey, string>>;
 
 export const MESSAGES: Messages = {
   'zh-CN': {
-    'app.title': 'Zhiaiwan Authenticator',
+    'app.title': 'authenticator',
     'app.subtitle': '离线 TOTP 验证器',
     'menu.codes': '验证码',
     'menu.add': '添加账号',
@@ -209,7 +209,7 @@ export const MESSAGES: Messages = {
     'trash.verifyMasterPasswordHint': '清空回收站属于高风险操作，请先输入主密码。'
   },
   'en-US': {
-    'app.title': 'Zhiaiwan Authenticator',
+    'app.title': 'authenticator',
     'app.subtitle': 'Offline TOTP authenticator',
     'menu.codes': 'Codes',
     'menu.add': 'Add Account',

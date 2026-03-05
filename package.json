@@ -197,7 +197,7 @@
   },
   "build": {
     "appId": "com.zhiaiwan.electron.authenticator",
-    "productName": "Zhiaiwan Authenticator",
+    "productName": "authenticator",
     "files": [
       "dist/**/*",
       "electron/**/*",
@@ -208,6 +208,7 @@
     },
     "mac": {
       "identity": null,
+      "icon": "build/icon.png",
       "target": [
         "dmg",
         "zip"
@@ -215,6 +216,7 @@
       "category": "public.app-category.productivity"
     },
     "win": {
+      "icon": "build/icon.png",
       "target": [
         "zip"
       ]

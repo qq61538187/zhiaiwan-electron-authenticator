@@ -16,10 +16,7 @@ const repositoryUrl = normalizeRepositoryUrl(
 );
 
 const appName = String(
-  packageJson.build?.productName ||
-    packageJson.productName ||
-    packageJson.name ||
-    'Zhiaiwan Authenticator'
+  packageJson.build?.productName || packageJson.productName || packageJson.name || 'authenticator'
 );
 
 module.exports = {
