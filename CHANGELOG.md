@@ -1,5 +1,11 @@
 # zhiaiwan-electron-authenticator
 
+## 1.0.2
+
+### Patch Changes
+
+- ae340de: 将应用品牌统一为 authenticator 并更新透明圆角应用图标资源
+
 ## 1.0.1
 
 ### Patch Changes
